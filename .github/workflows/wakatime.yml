@@ -1,0 +1,19 @@
+name: Work Stats Readme
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 18 * * 1"
+
+jobs:
+  update-gist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checks out the repository
+        uses: actions/checkout@v2
+      - name: Update gist
+        uses: matchai/waka-box@master
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIST_ID: c9362cf4dad979740d5b80221e07d638
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
